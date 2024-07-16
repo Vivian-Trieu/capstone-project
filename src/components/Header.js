@@ -1,10 +1,10 @@
-import Food from '../images/restaurantfood.jpg';
+import Food from '../images/restaurant_food.jpg';
 
 const Header = () => {
     return (
         <header>
-            <div class='content'>
-                <div class='callToAction'>
+            <div className='content'>
+                <div className='callToAction'>
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <h6>
