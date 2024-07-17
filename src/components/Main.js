@@ -19,7 +19,7 @@ const specials = [
     {
         title: 'Lemon Dessert',
         price: '$5.99',
-        description: "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
+        description: "This comes straight from grandma's recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
         imageSrc: LemonDessert,
     }
 ];
@@ -27,20 +27,22 @@ const specials = [
 const Main = () => {
     return (
         <main>
-            <section class='specials'>
-                <div class='specials-heading'>
+            <section className='specials'>
+                <div className='specials-heading'>
                     <h1>This week's specials</h1>
                     <button>Online Menu</button>
                 </div>
-                {specials.map((special) => (
-                    <Card
-                        key={special.title}
-                        title={special.title}
-                        price={special.price}
-                        description={special.description}
-                        imageSrc={special.imageSrc}
-                    />
-                ))}
+                <div className='dishes'>
+                    {specials.map((special) => (
+                        <Card
+                            key={special.title}
+                            title={special.title}
+                            price={special.price}
+                            description={special.description}
+                            imageSrc={special.imageSrc}
+                        />
+                    ))}
+                </div>
             </section>
         </main>
     );
