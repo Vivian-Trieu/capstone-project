@@ -6,12 +6,12 @@ const Card = ({ title, price, description, imageSrc }) => {
         <article>
             <img src={imageSrc} alt={title}/>
             <div className='card-content'>
-                <div className='card-row'>
+                <div className='card-heading'>
                     <h3>{title}</h3>
                     <h5>{price}</h5>
                 </div>
-                <p>{description}</p>
-                <div className='card-row'>
+                <p className='card-description'>{description}</p>
+                <div className='card-button'>
                     <h5>Order a delivery</h5>
                     <FontAwesomeIcon icon={faPersonBiking} />
                 </div>

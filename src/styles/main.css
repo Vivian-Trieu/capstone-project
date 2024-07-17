@@ -3,3 +3,34 @@ main {
     padding: 1rem;
     /* grid-column: span 12; */
 }
+
+.specials {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 80px auto;
+}
+
+.specials-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25%;
+    margin-bottom: 20px;
+}
+
+.dishes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+    .dishes {
+        flex-direction: column;
+    }
+}
