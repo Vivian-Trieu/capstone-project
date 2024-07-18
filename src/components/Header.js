@@ -1,6 +1,13 @@
 import Food from '../images/restaurant_food.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        navigate('/booking');
+    }
+
     return (
         <header>
             <div className='content'>
@@ -12,7 +19,7 @@ const Header = () => {
                         focused on traditional recipes served with a modern
                         twist.
                     </h6>
-                    <button>Reserve a Table</button>
+                    <button onClick={handleButtonClick}>Reserve a Table</button>
                 </div>
                 <img src={Food} alt="Food"></img>
             </div>
