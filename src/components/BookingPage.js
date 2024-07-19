@@ -1,6 +1,12 @@
+import BookingForm from './BookingForm';
+import Nav from './Nav';
+
 const BookingPage = () => {
     return (
-        <div>Booking Page Here</div>
+        <>
+            <Nav />
+            <BookingForm/>
+        </>
     )
 }
 

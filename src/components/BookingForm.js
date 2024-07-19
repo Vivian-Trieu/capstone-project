@@ -1,0 +1,149 @@
+import { useState } from 'react';
+import '../styles/bookingform.css';
+
+const ErrorMessage = ({ message }) => {
+    return (
+        <p className='FieldError'>{message}</p>
+    );
+}
+
+const BookingForm = () => {
+    const [date, setDate] = useState({
+        value: '',
+        isTouched: false,
+    });
+    const [time, setTime] = useState({
+        value: '',
+        isTouched: false,
+    });
+    const [guests, setGuests] = useState({
+        value: '',
+        isTouched: false,
+    });
+    const [occasion, setOccasion] = useState('');
+    const [availableTimes, setAvailableTimes] = useState([
+        '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'
+    ])
+
+    const clearForm = () => {
+        setDate({
+            value: '',
+            isTouched: false
+        });
+        setTime({
+            value: '',
+            isTouched: false
+        });
+        setGuests({
+            value: '',
+            isTouched: false
+        });
+        setOccasion('');
+    }
+
+    const handleBlur = (setter) => (e) => {
+        setter(prevState => ({
+            ...prevState,
+            isTouched: true,
+        }));
+    }
+
+    const handleChange = (setter) => (e) => {
+        const { value } = e.target;
+        setter(prevState => ({
+            ...prevState,
+            value,
+        }));
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form data submitted:', {
+            date: date.value,
+            time: time.value,
+            guests: guests.value,
+            occasion: occasion,
+        });
+        clearForm();
+
+    }
+
+    const getIsFormValid = () => {
+        return (
+            date.value &&
+            time.value &&
+            guests.value >= 1 &&
+            guests.value <= 10
+        )
+    }
+
+    const getErrors = () => {
+        const errors = {
+            date: date.isTouched && !date.value ? 'Date is required!' : '',
+            time: time.isTouched && !time.value ? 'Time is required!' : '',
+            guests: guests.isTouched && (!guests.value || guests.value < 1 || guests.value > 10) ? 'Guest number must be between 1 and 10!' : '',
+        };
+        return errors;
+    }
+
+    const errors = getErrors();
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label for="res-date">Choose date</label>
+            <input
+                type="date"
+                id="res-date"
+                value={date.value}
+                min={today}
+                onChange={handleChange(setDate)}
+                onBlur={handleBlur(setDate)}
+
+            />
+            {errors.date && <ErrorMessage message={errors.date} />}
+
+            <label for="res-time">Choose time</label>
+            <select
+                id="res-time"
+                value={time.value}
+                onChange={handleChange(setTime)}
+                onBlur={handleBlur(setTime)}
+
+            >
+                {availableTimes.map((time) => (
+                    <option key={time} value={time}>{time}</option>
+                ))};
+            </select>
+            {errors.time && <ErrorMessage message={errors.time} />}
+
+            <label for="guests">Number of guests</label>
+            <input
+                type="number"
+                id="guests"
+                placeholder="0"
+                min="1"
+                max="10"
+                value={guests.value}
+                onChange={handleChange(setGuests)}
+                onBlur={handleBlur(setGuests)}
+
+            />
+            {errors.guests && <ErrorMessage message={errors.guests} />}
+
+            <label for="occasion">Occasion <span>(Optional)</span></label>
+            <select
+                id="occasion"
+                value={occasion}
+                onChange={(e) => setOccasion(e.target.value)}
+            >
+                <option value="" disabled hidden>Occasion</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Engagement">Engagement</option>
+                <option value="Anniversary">Anniversary</option>
+            </select>
+            <input type="submit" disabled={!getIsFormValid()} value="Make reservation"/>
+        </form>
+    );
+}
+
+export default BookingForm;
