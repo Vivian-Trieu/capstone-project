@@ -27,12 +27,12 @@ const specials = [
 const Main = () => {
     return (
         <main>
-            <section className='specials'>
-                <div className='specials-heading'>
+            <section className="specials">
+                <div className="specials-heading">
                     <h1>This week's specials</h1>
                     <button>Online Menu</button>
                 </div>
-                <div className='dishes'>
+                <div className="dishes">
                     {specials.map((special) => (
                         <Card
                             key={special.title}

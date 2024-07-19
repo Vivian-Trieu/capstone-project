@@ -10,8 +10,8 @@ const Header = () => {
 
     return (
         <header>
-            <div className='content'>
-                <div className='callToAction'>
+            <div className="content">
+                <div className="callToAction">
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <h6>
