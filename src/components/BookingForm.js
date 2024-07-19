@@ -21,9 +21,26 @@ const BookingForm = () => {
         isTouched: false,
     });
     const [occasion, setOccasion] = useState('');
-    const [availableTimes, setAvailableTimes] = useState([
-        '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'
-    ])
+    const availableTimes = [
+        '17:00', '17:30', '18:00', '18:30', '19:00',
+        '19:30', '20:00', '20:30', '21:00', '21:30'
+    ];
+
+    const getDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    const formatTime = (time) => {
+        const [hour, minute] = time.split(':');
+        const hourNum = parseInt(hour, 10);
+        const period = hourNum >= 12 ? 'PM' : 'AM';
+        const formattedHour = hourNum % 12 || 12;
+        return `${formattedHour}:${minute} ${period}`;
+    }
 
     const clearForm = () => {
         setDate({
@@ -95,7 +112,7 @@ const BookingForm = () => {
                 type="date"
                 id="res-date"
                 value={date.value}
-                min={today}
+                min={getDate()}
                 onChange={handleChange(setDate)}
                 onBlur={handleBlur(setDate)}
 
@@ -111,7 +128,7 @@ const BookingForm = () => {
 
             >
                 {availableTimes.map((time) => (
-                    <option key={time} value={time}>{time}</option>
+                    <option key={time} value={time}>{formatTime(time)}</option>
                 ))};
             </select>
             {errors.time && <ErrorMessage message={errors.time} />}
