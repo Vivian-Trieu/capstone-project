@@ -71,9 +71,10 @@ img {
   border-radius: 16px;
 }
 
-button {
+input[type=submit], button {
   border-radius: 16px;
   background-color: #F4CE14;
+  color: #333333;
   font-family: "Karla", sans-serif;
   font-size: 20px;
   font-weight: 700;

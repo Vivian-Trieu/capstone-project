@@ -1,0 +1,92 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #495E57;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+    row-gap: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    padding: 30px;
+}
+
+.form-element {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-family: "Karla", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: white;
+}
+
+input[type="number"], input[type="date"], input::placeholder, select {
+    width: 370px;
+    height: 70px;
+    border-radius: 6px;
+    border: none;
+    background-color: #EDEFEE;
+    color: #495E57;
+    font-family: "Karla", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    appearance: none;
+    /* position: relative; */
+}
+
+
+/* styling to remove default calendar */
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+.submit-button {
+    display: flex;
+    align-self: center;
+    margin-top: 40px;
+}
+
+.submit-button:disabled {
+    background-color: #b6b5b5;
+    color: #636363;
+}
+
+.FieldError {
+    color: #F4CE14;
+    font-weight: 400;
+}

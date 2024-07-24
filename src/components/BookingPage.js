@@ -1,11 +1,16 @@
 import BookingForm from './BookingForm';
+import '../styles/bookingpage.css';
 import Nav from './Nav';
+
+
 
 const BookingPage = () => {
     return (
         <>
             <Nav />
-            <BookingForm/>
+            <div className="form-container">
+                <BookingForm/>
+            </div>
         </>
     )
 }

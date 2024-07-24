@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import '../styles/bookingform.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const ErrorMessage = ({ message }) => {
     return (
@@ -104,61 +105,74 @@ const BookingForm = () => {
     }
 
     const errors = getErrors();
-
     return (
         <form onSubmit={handleSubmit}>
-            <label for="res-date">Choose date</label>
-            <input
-                type="date"
-                id="res-date"
-                value={date.value}
-                min={getDate()}
-                onChange={handleChange(setDate)}
-                onBlur={handleBlur(setDate)}
+            <div className="form-grid">
+                <div className="form-element">
+                    <label htmlFor="res-date">Date</label>
+                    <input
+                        type="date"
+                        id="res-date"
+                        value={date.value}
+                        min={getDate()}
+                        onChange={handleChange(setDate)}
+                        onBlur={handleBlur(setDate)}
 
-            />
-            {errors.date && <ErrorMessage message={errors.date} />}
+                    />
+                    {errors.date && <ErrorMessage message={errors.date} />}
+                </div>
 
-            <label for="res-time">Choose time</label>
-            <select
-                id="res-time"
-                value={time.value}
-                onChange={handleChange(setTime)}
-                onBlur={handleBlur(setTime)}
+                <div className="form-element">
+                    <label htmlFor="res-time">Time</label>
+                    <select
+                        id="res-time"
+                        value={time.value}
+                        onChange={handleChange(setTime)}
+                        onBlur={handleBlur(setTime)}
 
-            >
-                {availableTimes.map((time) => (
-                    <option key={time} value={time}>{formatTime(time)}</option>
-                ))};
-            </select>
-            {errors.time && <ErrorMessage message={errors.time} />}
+                    >
+                        <option value="" disabled hidden>
+                            Select Time
+                        </option>
+                        {availableTimes.map((time) => (
+                            <option key={time} value={time}>{formatTime(time)}</option>
+                        ))};
+                    </select>
+                    {errors.time && <ErrorMessage message={errors.time} />}
+                </div>
 
-            <label for="guests">Number of guests</label>
-            <input
-                type="number"
-                id="guests"
-                placeholder="0"
-                min="1"
-                max="10"
-                value={guests.value}
-                onChange={handleChange(setGuests)}
-                onBlur={handleBlur(setGuests)}
+                <div className="form-element">
+                    <label htmlFor="guests">Number of Diners</label>
+                    <input
+                        type="number"
+                        id="guests"
+                        placeholder="No. of Diners"
+                        min="1"
+                        max="10"
+                        value={guests.value}
+                        onChange={handleChange(setGuests)}
+                        onBlur={handleBlur(setGuests)}
 
-            />
-            {errors.guests && <ErrorMessage message={errors.guests} />}
+                    />
+                    <FontAwesomeIcon icon="fa-regular fa-user" />
+                    {errors.guests && <ErrorMessage message={errors.guests} />}
+                </div>
 
-            <label for="occasion">Occasion <span>(Optional)</span></label>
-            <select
-                id="occasion"
-                value={occasion}
-                onChange={(e) => setOccasion(e.target.value)}
-            >
-                <option value="" disabled hidden>Occasion</option>
-                <option value="Birthday">Birthday</option>
-                <option value="Engagement">Engagement</option>
-                <option value="Anniversary">Anniversary</option>
-            </select>
-            <input type="submit" disabled={!getIsFormValid()} value="Make reservation"/>
+                <div className="form-element">
+                    <label htmlFor="occasion">Occasion<span> (Optional)</span></label>
+                    <select
+                        id="occasion"
+                        value={occasion}
+                        onChange={(e) => setOccasion(e.target.value)}
+                    >
+                        <option value="" disabled hidden>Occasion</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Engagement">Engagement</option>
+                        <option value="Anniversary">Anniversary</option>
+                    </select>
+                </div>
+            </div>
+            <input className="submit-button" type="submit" disabled={!getIsFormValid()} value="Make reservation" />
         </form>
     );
 }
