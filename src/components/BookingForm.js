@@ -8,24 +8,18 @@ const ErrorMessage = ({ message }) => {
     );
 }
 
-const BookingForm = () => {
-    const [date, setDate] = useState({
-        value: '',
-        isTouched: false,
-    });
-    const [time, setTime] = useState({
-        value: '',
-        isTouched: false,
-    });
-    const [guests, setGuests] = useState({
-        value: '',
-        isTouched: false,
-    });
-    const [occasion, setOccasion] = useState('');
-    const availableTimes = [
-        '17:00', '17:30', '18:00', '18:30', '19:00',
-        '19:30', '20:00', '20:30', '21:00', '21:30'
-    ];
+const BookingForm = ({
+    date = { value: '', isTouched: false },
+    setDate,
+    time = {value: '', isTouched: false },
+    setTime,
+    guests = {value: '', isTouched: false },
+    setGuests,
+    occasion = '',
+    setOccasion,
+    availableTimes = [],
+    dispatch
+}) => {
 
     const getDate = () => {
         const today = new Date();
@@ -92,7 +86,7 @@ const BookingForm = () => {
             time.value &&
             guests.value >= 1 &&
             guests.value <= 10
-        )
+        );
     }
 
     const getErrors = () => {
@@ -105,6 +99,7 @@ const BookingForm = () => {
     }
 
     const errors = getErrors();
+
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-grid">
@@ -115,9 +110,11 @@ const BookingForm = () => {
                         id="res-date"
                         value={date.value}
                         min={getDate()}
-                        onChange={handleChange(setDate)}
+                        onChange={(e) =>{
+                            handleChange(setDate)(e);
+                            dispatch({ type: 'UPDATE_TIMES', date: e.target.value });
+                        }}
                         onBlur={handleBlur(setDate)}
-
                     />
                     {errors.date && <ErrorMessage message={errors.date} />}
                 </div>
