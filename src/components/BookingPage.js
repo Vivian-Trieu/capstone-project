@@ -1,16 +1,26 @@
-import {useState, useReducer } from 'react';
+import {useState, useReducer, useEffect } from 'react';
 import BookingForm from './BookingForm';
 import '../styles/bookingpage.css';
 import Nav from './Nav';
 
+const fetchTimes = (date) => {
+    if (window.fetchAPI) {
+        return window.fetchAPI(date);
+    } else {
+        console.error('fetchAPI is not available.');
+        return [];
+    }
+}
+
 export const initializeTimes = () => {
-    return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+    const today = new Date();
+    return fetchTimes(today);
 }
 
 export const updateTimes = (state, action) => {
     switch(action.type) {
         case 'UPDATE_TIMES':
-            return state;
+            return fetchTimes(new Date(action.date));
         default:
             return state;
     }
@@ -32,6 +42,12 @@ const BookingPage = () => {
     const [occasion, setOccasion] = useState('');
 
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+
+    useEffect(() => {
+        if (date.isTouched) {
+            dispatch({ type: 'UPDATE_TIMES', date: date.value });
+        }
+    }, [date]);
 
     return (
         <>

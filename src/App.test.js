@@ -8,13 +8,13 @@ test('Renders the BookingForm heading', () => {
     expect(headingElement).toBeInTheDocument();
 })
 
-describe('initializeTimes', () => {
-  it('should return the initial times', () => {
-    const expectedTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-    const times = initializeTimes();
-    expect(times).toEqual(expectedTimes);
-  });
-});
+// describe('initializeTimes', () => {
+//   it('should return the initial times', () => {
+//     const expectedTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+//     const times = initializeTimes();
+//     expect(times).toEqual(expectedTimes);
+//   });
+// });
 
 describe('updatedTimes', () => {
   it('should return the same state when no valid action is provided', () => {

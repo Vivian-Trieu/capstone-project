@@ -151,7 +151,6 @@ const BookingForm = ({
                         onBlur={handleBlur(setGuests)}
 
                     />
-                    <FontAwesomeIcon icon="fa-regular fa-user" />
                     {errors.guests && <ErrorMessage message={errors.guests} />}
                 </div>
 
