@@ -1,4 +1,5 @@
 import {useState, useReducer, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import '../styles/bookingpage.css';
 import Nav from './Nav';
@@ -43,11 +44,24 @@ const BookingPage = () => {
 
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
+    
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (date.isTouched) {
             dispatch({ type: 'UPDATE_TIMES', date: date.value });
         }
     }, [date]);
+
+    const submitForm = (formData) => {
+        if (window.submitAPI && window.submitAPI(formData)){
+            navigate('/confirmed');
+            return true;
+        } else {
+            console.error('Submission failed');
+            return false;
+        }
+    }
 
     return (
         <>
@@ -65,6 +79,7 @@ const BookingPage = () => {
                     setOccasion={setOccasion}
                     availableTimes={availableTimes}
                     dispatch={dispatch}
+                    onSubmit={submitForm}
                 />
             </div>
         </>

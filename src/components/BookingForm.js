@@ -18,7 +18,8 @@ const BookingForm = ({
     occasion = '',
     setOccasion,
     availableTimes = [],
-    dispatch
+    dispatch,
+    onSubmit
 }) => {
 
     const getDate = () => {
@@ -70,14 +71,15 @@ const BookingForm = ({
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form data submitted:', {
+        const formData = {
             date: date.value,
             time: time.value,
             guests: guests.value,
             occasion: occasion,
-        });
+        };
+        console.log('Data submitted:', formData);
+        onSubmit(formData);
         clearForm();
-
     }
 
     const getIsFormValid = () => {

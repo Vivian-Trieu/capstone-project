@@ -32,5 +32,6 @@
 
     console.log('api.js loaded');
     console.log('fetchAPI:', global.fetchAPI);
+    console.log('submitAPI:', global.submitAPI);
 
 }) (window);
