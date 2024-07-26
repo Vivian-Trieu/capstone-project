@@ -44,7 +44,11 @@ const BookingPage = () => {
 
     const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
-    
+    const [bookingData, setBookingData] = useState((() => {
+        const storedData = localStorage.getItem('bookingData');
+        return storedData ? JSON.parse(storedData) : [];
+    }));
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -55,6 +59,12 @@ const BookingPage = () => {
 
     const submitForm = (formData) => {
         if (window.submitAPI && window.submitAPI(formData)){
+            const updatedBookingData = [...bookingData, formData]
+
+            setBookingData(updatedBookingData);
+            localStorage.setItem('bookingData', JSON.stringify(updatedBookingData));
+            console.log('Booking Data:', updatedBookingData);
+            dispatch({ type: 'UPDATE_TIMES', date: formData.date })
             navigate('/confirmed');
             return true;
         } else {
@@ -62,6 +72,16 @@ const BookingPage = () => {
             return false;
         }
     }
+
+    const getFilteredTimes = () => {
+        if (!date.value) {
+            return availableTimes;
+        }
+        const bookedTimes = bookingData
+            .filter(booking => booking.date === date.value)
+            .map(booking => booking.time);
+        return availableTimes.filter(time => !bookedTimes.includes(time));
+    };
 
     return (
         <>
@@ -77,7 +97,7 @@ const BookingPage = () => {
                     setGuests={setGuests}
                     occasion={occasion}
                     setOccasion={setOccasion}
-                    availableTimes={availableTimes}
+                    availableTimes={getFilteredTimes()}
                     dispatch={dispatch}
                     onSubmit={submitForm}
                 />
