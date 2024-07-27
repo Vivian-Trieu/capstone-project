@@ -4,24 +4,34 @@ import BookingForm from './BookingForm';
 import '../styles/bookingpage.css';
 import Nav from './Nav';
 
-const fetchTimes = (date) => {
+// const fetchTimes = (date) => {
+//     if (window.fetchAPI) {
+//         return window.fetchAPI(date);
+//     } else {
+//         console.error('fetchAPI is not available.');
+//         return [];
+//     }
+// }
+
+export const initializeTimes = () => {
+    const today = new Date();
     if (window.fetchAPI) {
-        return window.fetchAPI(date);
+        return window.fetchAPI(today);
     } else {
         console.error('fetchAPI is not available.');
         return [];
     }
 }
 
-export const initializeTimes = () => {
-    const today = new Date();
-    return fetchTimes(today);
-}
-
 export const updateTimes = (state, action) => {
     switch(action.type) {
         case 'UPDATE_TIMES':
-            return fetchTimes(new Date(action.date));
+            if (window.fetchAPI) {
+                return window.fetchAPI(new Date(action.date));
+            } else {
+                console.error('fetchAPI is not available.');
+                return [];
+            }
         default:
             return state;
     }
@@ -74,13 +84,23 @@ const BookingPage = () => {
     }
 
     const getFilteredTimes = () => {
+        const now = new Date();
+        const currentTime = now.getHours() * 100 + now.getMinutes();
+        const isToday = date.value === `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
         if (!date.value) {
             return availableTimes;
         }
         const bookedTimes = bookingData
             .filter(booking => booking.date === date.value)
             .map(booking => booking.time);
-        return availableTimes.filter(time => !bookedTimes.includes(time));
+
+        const validTimes = availableTimes.filter(time => {
+            const [hour, minute] = time.split(':').map(Number);
+            const timeInMinutes = hour * 100 + minute;
+            return !bookedTimes.includes(time) && (!isToday || timeInMinutes >= currentTime);
+        })
+        return validTimes;
     };
 
     return (
