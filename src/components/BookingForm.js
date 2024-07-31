@@ -27,6 +27,7 @@ const BookingForm = ({
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
+
         return `${year}-${month}-${day}`;
     }
 
@@ -38,7 +39,7 @@ const BookingForm = ({
         return `${formattedHour}:${minute} ${period}`;
     }
 
-    const clearForm = () => {
+    const clearForm = (setDate, setTime, setGuests, setOccasion) => {
         setDate({
             value: '',
             isTouched: false
@@ -79,10 +80,10 @@ const BookingForm = ({
         };
         console.log('Data submitted:', formData);
         onSubmit(formData);
-        clearForm();
+        clearForm(setDate, setTime, setGuests, setOccasion);
     }
 
-    const getIsFormValid = () => {
+    const getIsFormValid = (date, time, guests) => {
         return (
             date.value &&
             time.value &&
@@ -103,7 +104,7 @@ const BookingForm = ({
     const errors = getErrors();
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} aria-label="Booking Form">
             <div className="form-grid">
                 <div className="form-element">
                     <label htmlFor="res-date">Date</label>
@@ -117,6 +118,7 @@ const BookingForm = ({
                             dispatch({ type: 'UPDATE_TIMES', date: e.target.value });
                         }}
                         onBlur={handleBlur(setDate)}
+                        aria-label="Select Date"
                     />
                     {errors.date && <ErrorMessage message={errors.date} />}
                 </div>
@@ -128,7 +130,7 @@ const BookingForm = ({
                         value={time.value}
                         onChange={handleChange(setTime)}
                         onBlur={handleBlur(setTime)}
-
+                        aria-label="Select Time"
                     >
                         <option value="" disabled hidden>
                             Select Time
@@ -151,7 +153,7 @@ const BookingForm = ({
                         value={guests.value}
                         onChange={handleChange(setGuests)}
                         onBlur={handleBlur(setGuests)}
-
+                        aria-label="Number of Diners"
                     />
                     {errors.guests && <ErrorMessage message={errors.guests} />}
                 </div>
@@ -162,6 +164,7 @@ const BookingForm = ({
                         id="occasion"
                         value={occasion}
                         onChange={(e) => setOccasion(e.target.value)}
+                        aria-label="Select Occasion"
                     >
                         <option value="" disabled hidden>Occasion</option>
                         <option value="Birthday">Birthday</option>
@@ -170,7 +173,7 @@ const BookingForm = ({
                     </select>
                 </div>
             </div>
-            <input className="submit-button" type="submit" disabled={!getIsFormValid()} value="Make reservation" />
+            <input className="submit-button" type="submit" disabled={!getIsFormValid(date, time, guests)} value="Make reservation" aria-label="Make reservation"/>
         </form>
     );
 }
