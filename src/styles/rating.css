@@ -1,0 +1,13 @@
+.icon {
+    border-radius: 50%;
+    width: 50px;
+}
+
+.stars {
+    color: #F4CE14;
+}
+
+.rating {
+    background-color: #EDEFEE;
+    border-radius: 16px;
+}

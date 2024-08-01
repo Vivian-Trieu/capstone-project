@@ -1,6 +1,6 @@
 main {
     grid-area: main;
-    padding: 1rem;
+    /* padding: 1rem; */
     /* grid-column: span 12; */
 }
 
@@ -26,6 +26,11 @@ main {
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.testimonials {
+    background-color: #fbdabb98;
+    margin: 0;
 }
 
 /* Medium screens (tablets) */

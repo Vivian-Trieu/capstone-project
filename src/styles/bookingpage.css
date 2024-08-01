@@ -37,7 +37,7 @@ label {
     font-family: "Karla", sans-serif;
     font-size: 1.1rem;
     font-weight: 400;
-    color: white;
+    color: #EDEFEE;
 }
 
 input[type="number"], input[type="date"], input::placeholder, select {
