@@ -10,4 +10,26 @@
 .rating {
     background-color: #EDEFEE;
     border-radius: 16px;
+    width: 210px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+
+.user > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rating > h6 {
+    font-size: 1.0rem;
 }

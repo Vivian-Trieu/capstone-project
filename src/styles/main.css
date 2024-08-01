@@ -31,11 +31,31 @@ main {
 .testimonials {
     background-color: #fbdabb98;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px;
+    gap: 50px;
+}
+
+.testimonials > h2 {
+    font-size: 2.0rem;
+    color: #333333;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 /* Medium screens (tablets) */
 @media (max-width: 768px) {
     .dishes {
+        flex-direction: column;
+    }
+
+    .ratings {
         flex-direction: column;
     }
 }

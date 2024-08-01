@@ -11,10 +11,12 @@ const Rating = ({ name, username, comment, imageSrc}) => {
             </div>
             <div className="user">
                 <img className="icon" src={imageSrc} alt={name} />
-                <h5>{name}</h5>
-                <h6 className="username">{username}</h6>
+                <div>
+                    <h5>{name}</h5>
+                    <p>{username}</p>
+                </div>
             </div>
-                <h6>{comment}</h6>
+            <h6>{comment}</h6>
         </div>
     )
 }
