@@ -1,7 +1,13 @@
 import Card from './Card';
+import Rating from './Rating';
 import GreekSalad from '../images/greek_salad.jpg';
 import Bruschetta from '../images/bruschetta.jpg';
 import LemonDessert from '../images/lemon_dessert.jpg';
+import user1 from '../images/user1.png';
+import user2 from '../images/user2.png';
+import user3 from '../images/user3.png';
+import user4 from '../images/user4.png';
+
 
 const specials = [
     {
@@ -24,6 +30,33 @@ const specials = [
     }
 ];
 
+const ratings = [
+    {
+        name: 'John Green',
+        username: 'jgreen',
+        comment: "Amazing food and fantastic service! Will return!",
+        imageSrc: user1,
+    },
+    {
+        name: 'Michael Smith',
+        username: 'mike_smith',
+        comment: "Delicious dishes with wonderful ambiance!",
+        imageSrc: user2,
+    },
+    {
+        name: 'Sarah Brown',
+        username: 'sarahb123',
+        comment: "Best Mediterranean food in town!",
+        imageSrc: user3,
+    },
+    {
+        name: 'Jen Lopez',
+        username: 'j_lo',
+        comment: "Incredible dining experience every time!",
+        imageSrc: user4,
+    }
+]
+
 const Main = () => {
     return (
         <main>
@@ -40,6 +73,20 @@ const Main = () => {
                             price={special.price}
                             description={special.description}
                             imageSrc={special.imageSrc}
+                        />
+                    ))}
+                </div>
+            </section>
+            <section className="testimonials">
+                    <h2>What our customers say!</h2>
+                    <div className="ratings">
+                    {ratings.map((ratings) => (
+                        <Rating
+                            key={ratings.name}
+                            name={ratings.name}
+                            username={ratings.username}
+                            comment={ratings.comment}
+                            imageSrc={ratings.imageSrc}
                         />
                     ))}
                 </div>
