@@ -7,7 +7,8 @@ import user1 from '../images/user1.png';
 import user2 from '../images/user2.png';
 import user3 from '../images/user3.png';
 import user4 from '../images/user4.png';
-
+import MarioAndAdrianB from '../images/Mario_and_Adrian_B.jpg';
+import RestaurantChefB from '../images/restaurant_chef_B.jpg';
 
 const specials = [
     {
@@ -90,6 +91,29 @@ const Main = () => {
                         />
                     ))}
                 </div>
+            </section>
+            <section className="about">
+                <div className="about-desc">
+                    <h1>Little Lemon</h1>
+                    <h2>Chicago</h2>
+                    <h6>Based in Chicago, Illinois, Little Lemon is a family-owned Mediterranean restaurant,
+                        focused on traditional recipes served with a modern twist. The chefs draw inspiration
+                        from Italian, Greek, and Turkish culture and have a menu of 12–15 items that they rotate seasonally.
+                        The restaurant has a rustic and relaxed atmosphere with moderate prices, making it a popular place
+                        for a meal any time of the day.
+                        <br />
+                        Little Lemon is owned by two Italian brothers, Mario and Adrian, who moved to the United States
+                        to pursue their shared dream of owning a restaurant. To craft the menu, Mario relies on family
+                        recipes and his experience as a chef in Italy. Adrian does all the marketing for the restaurant
+                        and led the effort to expand the menu beyond classic Italian to incorporate additional cuisines
+                        from the Mediterranean region.
+                    </h6>
+                </div>
+                <div className="about-images">
+                    <img src={MarioAndAdrianB} alt='Mario and Adrian in the kitchen' />
+                    <img src={RestaurantChefB} alt='Restaurant chef preparing dish'/>
+                </div>
+
             </section>
         </main>
     );
