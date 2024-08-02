@@ -101,7 +101,7 @@ const Main = () => {
                         from Italian, Greek, and Turkish culture and have a menu of 12–15 items that they rotate seasonally.
                         The restaurant has a rustic and relaxed atmosphere with moderate prices, making it a popular place
                         for a meal any time of the day.
-                        <br />
+                        <br /><br/>
                         Little Lemon is owned by two Italian brothers, Mario and Adrian, who moved to the United States
                         to pursue their shared dream of owning a restaurant. To craft the menu, Mario relies on family
                         recipes and his experience as a chef in Italy. Adrian does all the marketing for the restaurant
@@ -110,8 +110,8 @@ const Main = () => {
                     </h6>
                 </div>
                 <div className="about-images">
-                    <img src={MarioAndAdrianB} alt='Mario and Adrian in the kitchen' />
-                    <img src={RestaurantChefB} alt='Restaurant chef preparing dish'/>
+                    <img src={MarioAndAdrianB} className="img1" alt='Mario and Adrian in the kitchen' />
+                    <img src={RestaurantChefB} className="img2" alt='Restaurant chef preparing dish'/>
                 </div>
 
             </section>
