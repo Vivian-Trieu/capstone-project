@@ -51,7 +51,7 @@ main {
 
 .about {
     background-color: #333333;
-    padding: 50px 0px;
+    padding: 50px 30px;
     display: flex;
     flex-direction: row;
     gap: 100px;
@@ -102,16 +102,38 @@ main {
     right: 0px;
 }
 
-/* Medium screens (tablets) */
-@media (max-width: 768px) {
-    .dishes {
-        flex-direction: column;
-    }
-}
 
 @media (max-width: 990px) {
     .ratings {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+    .dishes {
+        flex-direction: column;
+    }
+
+    .about {
+        flex-direction: column;
+        gap: 80px;
+        padding-bottom: 100px;
+    }
+
+    .about-desc {
+        width: 100%;
+        padding-bottom: 0px;
+    }
+
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+    .ratings {
+        display: flex;
+        flex-direction: column;
     }
 }
