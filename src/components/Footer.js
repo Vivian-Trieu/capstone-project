@@ -19,8 +19,8 @@ const Footer = () => {
             </div>
             <div className="link-column">
                 <h5>Contact</h5>
-                <h6>123 Lemon Grove Avenue</h6>
-                <h6>contact@littlelemonchicago.com</h6>
+                <h6>123 Lemon Grove Ave</h6>
+                <h6>littlelemon@email.com</h6>
                 <h6>(312) 555-1234</h6>
             </div>
             <div className="link-column">
