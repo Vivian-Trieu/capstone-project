@@ -2,7 +2,7 @@ import Logo from '../images/Logo.svg';
 
 const Nav = () => {
     return (
-        <nav>
+        <nav className='nav-bar'>
             <ul>
                 <li><img src={Logo} alt="Logo"></img></li>
                 <li><a href="/">Home</a></li>
