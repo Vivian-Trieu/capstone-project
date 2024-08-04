@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import '../styles/bookingpage.css';
 import Nav from './Nav';
+import Restaurant from '../images/restaurant.jpg';
+import MarioAndAdrianA from '../images/Mario_and_Adrian_A.jpg';
+import Food from '../images/restaurant_food.jpg';
 
 // const fetchTimes = (date) => {
 //     if (window.fetchAPI) {
@@ -106,7 +109,9 @@ const BookingPage = () => {
     return (
         <>
             <Nav />
-            <h1>Reservations</h1>
+            <div className='title-container'>
+                <h1>Reservations</h1>
+            </div>
             <div className="form-container">
                 <BookingForm
                     date={date}
@@ -121,6 +126,11 @@ const BookingPage = () => {
                     dispatch={dispatch}
                     onSubmit={submitForm}
                 />
+            </div>
+            <div className="img-row">
+                <img src={Restaurant} alt="Restaurant"/>
+                <img src={Food} alt="Food"/>
+                <img src={MarioAndAdrianA} alt="Mario and Adrian"/>
             </div>
         </>
     )
