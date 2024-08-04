@@ -20,6 +20,7 @@ header img {
     height: fit-content;
     /* width: max-content; */
     margin-right: 10%;
+    padding: 0px 10px;
 }
 
 .content {
@@ -51,17 +52,46 @@ header h6 {
 
 /* Medium screens (tablets) */
 @media (max-width: 768px) {
-    header img {
-        width: 300px;
-        height: 325px;
+
+    header h1 {
+        font-size: 3.5rem;
     }
+
+    header h2 {
+        font-size: 2.0rem;
+    }
+
+    header h6 {
+        font-size: 1.0rem;
+    }
+
 }
 
 /* Small screens (phones) */
 @media (max-width: 480px) {
     header img {
-        width: 200px;
-        height: 220px;
+        width: 140px;
+        height: 250px;
+        margin-top: auto;
+    }
+
+    header h1 {
+        font-size: 3.0rem;
+    }
+
+    header h2 {
+        font-size: 1.8rem;
+    }
+
+    header h6 {
+        font-size: 0.8rem;
+    }
+
+
+    .callToAction {
+        margin-right: 35%;
+        width: 100px;
+        padding: 0px 0px;
     }
 }
 
